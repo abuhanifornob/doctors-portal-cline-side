@@ -9,7 +9,7 @@ const Banner = () => {
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src={bannerImg} className="rounded-lg shadow-2xl w-1/2" />
+        <img src={bannerImg} className="rounded-lg shadow-2xl lg:w-1/2" />
         <div>
           <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
           <p className="py-6">

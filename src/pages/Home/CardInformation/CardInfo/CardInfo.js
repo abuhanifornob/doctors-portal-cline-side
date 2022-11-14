@@ -3,7 +3,7 @@ import React from "react";
 const CardInfo = ({ card }) => {
   const { discribtion, id, title, icon, bgCalss } = card;
   return (
-    <div className={`card card-side shadow-xl p-6 ${bgCalss}`}>
+    <div className={`card md:card-side shadow-xl p-6 ${bgCalss}`}>
       <figure>
         <img src={icon} alt="Movie" />
       </figure>
