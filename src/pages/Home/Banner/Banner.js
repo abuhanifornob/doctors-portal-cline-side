@@ -1,6 +1,7 @@
 import React from "react";
 import bannerImg from "../../../assets/images/chair.png";
 import bgImg from "../../../assets/images/bg.png";
+import buttonComponet from "../../../component/buttonComponet";
 
 const Banner = () => {
   return (
