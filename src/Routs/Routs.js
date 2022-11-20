@@ -1,4 +1,7 @@
 import Appointment from "../pages/Appointment/Appointment/Appointment";
+import DashBoard from "../pages/DashBoard/DashBoard";
+import SignUp from "../pages/SignUp/SignUp";
+import PrivetRoute from "./PrivetRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../layouts/Main");
@@ -24,6 +27,15 @@ const { default: Login } = require("../pages/Login/Login");
             path:"/appointment",
             element:<Appointment></Appointment>
         }
+        ,{
+            path:'/signup',
+            element:<SignUp></SignUp>
+        }
     ]
+    },
+    {
+        path:"/dashboard",
+        element:<PrivetRoute><DashBoard></DashBoard></PrivetRoute>
     }
+    
 ])
