@@ -2,13 +2,15 @@ import { error } from 'daisyui/src/colors';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {createUser,userProfileUpdate}=useContext(AuthContext);
-    const[signUpError,setSignUpError]=useState("")
+    const[signUpError,setSignUpError]=useState("");
+    const navigate=useNavigate();
+
 
 
    
@@ -24,7 +26,9 @@ const SignUp = () => {
                 displayName:data.name
             }
             userProfileUpdate(userinfo)
-            .then(()=>{})
+            .then(()=>{
+                navigate("/")
+            })
             .catch(()=>{})
         })
         .catch(error=>
