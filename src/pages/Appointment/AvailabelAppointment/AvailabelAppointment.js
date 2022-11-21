@@ -22,10 +22,9 @@ const AvailabelAppointment = ({selectedDate}) => {
     const {data:appointmentOptions=[],refetch,isLoading}=useQuery({
         queryKey:['appointmentOptions'],
         queryFn:async()=>{
-           const res= await fetch(`http://localhost:5000/appointmentOptions?date=${date}`)
+           const res= await fetch(`http://localhost:5000/appointmentOptions?date=${date}`);
            //const res= await fetch(`http://localhost:5000/vs2/appointmentOptions`)
-
-            const data =await res.json()
+            const data =await res.json();
             return data
         }
     })

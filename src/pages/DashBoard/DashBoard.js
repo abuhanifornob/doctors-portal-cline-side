@@ -1,11 +1,16 @@
-import React from 'react';
+import { async } from '@firebase/util';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 
 const DashBoard = () => {
+    
     return (
         <div>
-            <h1>Dash Boar is Coomig Son.................</h1>
+            
         </div>
     );
+       
 };
 
 export default DashBoard;

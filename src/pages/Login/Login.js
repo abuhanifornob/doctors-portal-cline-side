@@ -1,7 +1,8 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 import { AuthContext } from '../../context/AuthProvider';
 const provider = new GoogleAuthProvider();
 
@@ -11,26 +12,23 @@ const Login = () => {
     const [logninError,setLoginError]=useState("");
     const {singInEmailPassword,googleLongin}=useContext(AuthContext);
     const location=useLocation();
-    const navigate=useNavigate();
-   
-    const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+    
 
-
-
+    const from = location.state?.from?.pathname || '/';
     const onSubmit = data =>{
          setLoginError("")
         singInEmailPassword(data.email,data.password)
         .then(result=>{
-            const user=result.user;
-            console.log(user);
-            <navigate to="/login" state={{ from: location }} replace />
-
+           
+            // <navigate to="/login" state={{ from: location }} replace />
+            navigate(from, { replace: true });
         })
         .catch(error=>{
             setLoginError(error.message);
         })
-
     } 
+
 const handleGoogleLogIn=()=>{
     googleLongin(provider)
     .then(()=>{})

@@ -1,5 +1,7 @@
+import DashBoardLayout from "../layouts/DashBoardLayout";
 import Appointment from "../pages/Appointment/Appointment/Appointment";
 import DashBoard from "../pages/DashBoard/DashBoard";
+import Myappointment from "../pages/DashBoard/Myappointment";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivetRoute from "./PrivetRoute";
 
@@ -35,7 +37,12 @@ const { default: Login } = require("../pages/Login/Login");
     },
     {
         path:"/dashboard",
-        element:<PrivetRoute><DashBoard></DashBoard></PrivetRoute>
+        element:<PrivetRoute><DashBoardLayout></DashBoardLayout></PrivetRoute>,
+        children:[{
+            path:"/dashboard",
+            element:<Myappointment></Myappointment>
+        }
+      ]
     }
     
 ])

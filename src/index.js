@@ -18,7 +18,6 @@ root.render(
         <Toaster></Toaster>
       </AuthProvider>
     </QueryClientProvider>
-
   </React.StrictMode>
 );
 
