@@ -5,6 +5,8 @@ import Loading from '../../Shareds/Loading/Loading';
 
 const AddDoctor = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imgbbKey=process.env.REACT_APP_imgbbKey;
+  
     const {data:specialties =[],isLoading}=useQuery({
         queryKey:["specialties"],
         queryFn:async()=>{
@@ -14,7 +16,22 @@ const AddDoctor = () => {
         }
         })
     const handleAddDoctor = data => {
-        console.log(data);
+        const image=data.image[0];
+        const formData = new FormData();
+        formData.append('image',image);
+        const url=`https://api.imgbb.com/1/upload?expiration=600&key=${imgbbKey}`;
+        fetch(url,{
+            method:"POST",
+            body:formData
+        })
+        .then(res=>res.json())
+        .then(imgBbData=>{
+            if(imgBbData.success){
+                console.log(imgBbData.data.url);
+            }
+            
+        })
+
     }
     if(isLoading){
         <Loading></Loading>
@@ -57,8 +74,8 @@ const AddDoctor = () => {
                     <label className="label">
                         <span className="label-text">Phot</span>
                     </label>
-                    <input {...register("img", { required: true })} type="file" placeholder="Chose Photo" className="input input-bordered w-full" />
-                    {errors.img && <span className='text-yellow-600'>This field is required</span>}
+                    <input {...register("image", { required: true })} type="file" placeholder="Chose Photo" className="input input-bordered w-full" />
+                    {errors.image && <span className='text-yellow-600'>This field is required</span>}
                 </div>
 
                 {/* {
