@@ -1,5 +1,6 @@
 import DashBoardLayout from "../layouts/DashBoardLayout";
 import Appointment from "../pages/Appointment/Appointment/Appointment";
+import AllUsers from "../pages/DashBoard/AllUsers";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import Myappointment from "../pages/DashBoard/Myappointment";
 import SignUp from "../pages/SignUp/SignUp";
@@ -38,9 +39,14 @@ const { default: Login } = require("../pages/Login/Login");
     {
         path:"/dashboard",
         element:<PrivetRoute><DashBoardLayout></DashBoardLayout></PrivetRoute>,
-        children:[{
+        children:[
+            {
             path:"/dashboard",
             element:<Myappointment></Myappointment>
+        },
+        {
+            path:"/dashboard/users",
+            element:<AllUsers></AllUsers>
         }
       ]
     }

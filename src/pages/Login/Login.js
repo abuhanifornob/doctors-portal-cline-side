@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context/AuthProvider';
+import useToken from '../../Hooks/useToken';
 const provider = new GoogleAuthProvider();
 
 
@@ -11,18 +12,22 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [logninError,setLoginError]=useState("");
     const {singInEmailPassword,googleLongin}=useContext(AuthContext);
+    const[userEmail,setUserEmail]=useState("");
+    const [token]=useToken(userEmail);
     const location=useLocation();
     const navigate = useNavigate();
-    
-
     const from = location.state?.from?.pathname || '/';
+
+    if(token){
+        navigate(from, { replace: true });
+    }
     const onSubmit = data =>{
          setLoginError("")
         singInEmailPassword(data.email,data.password)
         .then(result=>{
-           
+           setUserEmail(data.email);
             // <navigate to="/login" state={{ from: location }} replace />
-            navigate(from, { replace: true });
+            //navigate(from, { replace: true });
         })
         .catch(error=>{
             setLoginError(error.message);
