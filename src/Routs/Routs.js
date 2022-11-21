@@ -1,9 +1,11 @@
 import DashBoardLayout from "../layouts/DashBoardLayout";
 import Appointment from "../pages/Appointment/Appointment/Appointment";
+import AddDoctor from "../pages/DashBoard/AddDoctor/AddDoctor";
 import AllUsers from "../pages/DashBoard/AllUsers";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import Myappointment from "../pages/DashBoard/Myappointment";
 import SignUp from "../pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivetRoute from "./PrivetRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -46,7 +48,13 @@ const { default: Login } = require("../pages/Login/Login");
         },
         {
             path:"/dashboard/users",
+            //element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             element:<AllUsers></AllUsers>
+        },
+        {
+            path:"/dashboard/adddoctor",
+            //element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            element:<AddDoctor></AddDoctor>
         }
       ]
     }

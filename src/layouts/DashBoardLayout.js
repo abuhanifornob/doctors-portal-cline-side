@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import useAdmin from '../Hooks/useAdmin';
 import Navbar from '../pages/Shareds/Navbar/Navbar';
 
 const DashBoardLayout = () => {
+    const{user}=useContext(AuthContext);
+    
+    const[isAdmin]=useAdmin(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -16,7 +21,15 @@ const DashBoardLayout = () => {
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
 
                         <li><Link to="/dashboard">My Appointment</Link></li>
-                        <li><Link to="/dashboard/users">All Users</Link></li>
+                        {
+                            isAdmin && 
+                            <>
+                            <li><Link to="/dashboard/users">All Users</Link></li>
+                            <li><Link to="/dashboard/adddoctor">Add a Doctor</Link></li>
+                            </>
+                            
+                        }
+                        
                      
                     </ul>
 
