@@ -3,6 +3,7 @@ import Appointment from "../pages/Appointment/Appointment/Appointment";
 import AddDoctor from "../pages/DashBoard/AddDoctor/AddDoctor";
 import AllUsers from "../pages/DashBoard/AllUsers";
 import DashBoard from "../pages/DashBoard/DashBoard";
+import ManageDoctors from "../pages/DashBoard/ManageDoctors/ManageDoctors";
 import Myappointment from "../pages/DashBoard/Myappointment";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminRoute from "./AdminRoute/AdminRoute";
@@ -55,7 +56,12 @@ const { default: Login } = require("../pages/Login/Login");
             path:"/dashboard/adddoctor",
             //element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             element:<AddDoctor></AddDoctor>
-        }
+        },
+        {
+            path:"/dashboard/manageDoctors",
+            //element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            element:<ManageDoctors></ManageDoctors>
+        },
       ]
     }
     
