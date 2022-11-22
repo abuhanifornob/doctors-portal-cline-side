@@ -21,7 +21,7 @@ const AddDoctor = () => {
         const image=data.image[0];
         const formData = new FormData();
         formData.append('image',image);
-        const url=`https://api.imgbb.com/1/upload?expiration=600&key=${imgbbKey}`;
+        const url=`https://api.imgbb.com/1/upload?key=${imgbbKey}`;
         fetch(url,{
             method:"POST",
             body:formData
@@ -59,10 +59,10 @@ const AddDoctor = () => {
 
     }
     if(isLoading){
-        <Loading></Loading>
+       return<Loading></Loading>
     }
     return (
-        <div className='w-96 p-7 shadow-xl'>
+        <div className='w-full p-7 shadow-xl'>
             <h2 className='text-2xl text-primary'>Add a New Doctor</h2>
             <form onSubmit={handleSubmit(handleAddDoctor)}>
                 {/* register your input into the hook by invoking the "register" function */}
@@ -84,7 +84,7 @@ const AddDoctor = () => {
                     <label className="label">
                         <span className="label-text">Specialty</span>
                     </label>
-                    <select {...register("specialty", { required: true })} className="select select-bordered w-full max-w-xs">
+                    <select {...register("specialty", { required: true })} className="select select-bordered w-full ">
                         <option disabled selected>Pick the Specialty</option>
                         {
                             specialties.map(specialty=> <option
@@ -97,7 +97,7 @@ const AddDoctor = () => {
                 </div>
                 <div className="form-control w-full">
                     <label className="label">
-                        <span className="label-text">Phot</span>
+                        <span className="label-text">Photo</span>
                     </label>
                     <input {...register("image", { required: true })} type="file" placeholder="Chose Photo" className="input input-bordered w-full" />
                     {errors.image && <span className='text-yellow-600'>This field is required</span>}
