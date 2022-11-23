@@ -5,7 +5,7 @@ import { json } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const BookingModal = ({ treatmen, selectedDate,setTreatmen,refetch}) => {
-    const { name, slots } = treatmen;
+    const { name, slots,price } = treatmen;
     const date = format(selectedDate, "PP");
     const {user}=useContext(AuthContext)
     console.log(user);
@@ -25,7 +25,8 @@ const BookingModal = ({ treatmen, selectedDate,setTreatmen,refetch}) => {
             patient,
             phone,
             email,
-            slot:selectedOption
+            slot:selectedOption,
+            price
         }
         fetch("http://localhost:5000/bookings",{
             method:"POST",

@@ -5,6 +5,7 @@ import AllUsers from "../pages/DashBoard/AllUsers";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import ManageDoctors from "../pages/DashBoard/ManageDoctors/ManageDoctors";
 import Myappointment from "../pages/DashBoard/Myappointment";
+import Payment from "../pages/DashBoard/Payment/Payment";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivetRoute from "./PrivetRoute";
@@ -61,6 +62,12 @@ const { default: Login } = require("../pages/Login/Login");
             path:"/dashboard/manageDoctors",
             //element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             element:<ManageDoctors></ManageDoctors>
+        },
+        {
+            path:"/dashboard/payment/:id",
+            //element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            element:<Payment></Payment>,
+            loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
         },
       ]
     }
